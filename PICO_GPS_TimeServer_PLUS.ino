@@ -27,7 +27,7 @@ byte mac[] = {
   0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFA };
 
 // DEBUG Mode
-#define DEBUG true
+#define DEBUG false
 
 // Set your Static IP address
 IPAddress ip(192, 168, 1, 201); // put your static IP here
