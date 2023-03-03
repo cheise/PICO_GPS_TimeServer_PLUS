@@ -1,4 +1,4 @@
-// Network based GPS NTP server - Cristian Heise <cheise@vodafone.de> - 02/06/2023
+// Network based GPS NTP server - Christian Heise <cheise@vodafone.de> - 02/06/2023
 // ---RP2040 - Raspberry Pico with W5500 Network Card, DS3231 RTC and NEO6M GPS Board---
 // Based on the work of:
 // Cristiano Monteiro <cristianomonteiro@gmail.com>
