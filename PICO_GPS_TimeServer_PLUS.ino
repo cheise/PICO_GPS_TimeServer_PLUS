@@ -57,7 +57,7 @@ RtcDS3231<TwoWire> Rtc(Wire);
 
 // LCD Display Type intial
 //U8G2_ST7565_ERC12864_ALT_F_4W_SW_SPI u8g2(U8G2_R0, /* clock=*/ 10, /* data=*/ 11, /* cs=*/ 13, /* dc=*/ 15, /* reset=*/ 14);
-U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, /* reset=*/U8X8_PIN_NONE); // OLED display library parameters
+U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, /* reset=*/ U8X8_PIN_NONE); // OLED display library parameters
 
 TinyGPSPlus gps;
 time_t displayTime = 0;    // time that is currently displayed
@@ -208,7 +208,6 @@ void InitLCD()
 {
   u8g2.setI2CAddress(0x3C);
   u8g2.begin(); // Initialize OLED library
-  u8g2.setContrast(70);
   u8g2.enableUTF8Print();
   u8g2.setFontPosTop();
   u8g2.setFontDirection(0);
