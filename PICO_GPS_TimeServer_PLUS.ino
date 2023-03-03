@@ -206,7 +206,7 @@ void ShowSyncFlag()
 
 void InitLCD()
 {
-  u8g2.setI2CAddress(0x7A);
+  u8g2.setI2CAddress(0x3C);
   u8g2.begin(); // Initialize OLED library
   u8g2.setContrast(70);
   u8g2.enableUTF8Print();
