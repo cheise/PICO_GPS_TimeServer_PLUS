@@ -27,13 +27,13 @@ byte mac[] = {
   0xAA, 0xBB, 0xCC, 0xDD, 0xEE, 0xFA };
 
 // DEBUG Mode
-#define DEBUG false
+#define DEBUG false // Debug-Mode on/off (show Infos on Serial Port)
 
 // Set your Static IP address
-IPAddress ip(192, 168, 1, 201); // put your static IP here
-IPAddress subnet(255, 255, 255, 0);   // put your subnet here
+IPAddress ip(192, 168, 1, 200); //  <--- example, put your static IP here
+IPAddress subnet(255, 255, 255, 0);   // <--- example, put your subnet here
 // Set your Gateway IP address
-IPAddress gateway(192, 168, 1, 1);    // put your Gateway IP here, when need!
+IPAddress gateway(192, 168, 1, 1);    // <--- example, put your Gateway IP here, when need!
 IPAddress localEthernetIP;
 
 // An Ethernet UDP instance
@@ -49,9 +49,9 @@ EthernetServer server(80);
 
 #define rxPin 1   // Raspberry Pi Pico
 #define txPin 0   // Raspberry Pi Pico
-#define LOCK_LED 21
-#define UNLOCK_LED 20
-#define PPS_LED 25
+#define LOCK_LED 21 // show GPS sync
+#define UNLOCK_LED 20 // show RTC sync
+#define PPS_LED 25 // onboard LED PI Pico
 
 RtcDS3231<TwoWire> Rtc(Wire);
 
