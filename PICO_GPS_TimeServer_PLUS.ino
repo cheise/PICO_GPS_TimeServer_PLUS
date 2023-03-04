@@ -49,8 +49,8 @@ EthernetServer server(80);
 
 #define rxPin 1   // Raspberry Pi Pico
 #define txPin 0   // Raspberry Pi Pico
-#define LOCK_LED 21 // show GPS sync
-#define UNLOCK_LED 20 // show RTC sync
+#define LOCK_LED 20 // show GPS sync
+#define UNLOCK_LED 21 // show RTC sync
 #define PPS_LED 25 // onboard LED PI Pico
 
 RtcDS3231<TwoWire> Rtc(Wire);
