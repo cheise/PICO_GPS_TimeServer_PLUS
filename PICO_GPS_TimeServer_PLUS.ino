@@ -1,4 +1,4 @@
-// Network based GPS NTP server - Christian Heise <cheise@vodafone.de> - 02/06/2023
+// Network based GPS NTP server with simple WEBIF - Christian Heise <cheise@vodafone.de> - 02/06/2023
 // ---RP2040 - Raspberry Pico with W5500 Network Card, DS3231 RTC and NEO6M GPS Board---
 // Based on the work of:
 // Cristiano Monteiro <cristianomonteiro@gmail.com>
@@ -15,8 +15,8 @@ static const int NTP_PACKET_SIZE = 48;
 // buffers for receiving and sending data
 byte packetBuffer[NTP_PACKET_SIZE];
 
-#include <Ethernet.h>
-#include <EthernetUdp.h>
+#include <Ethernet.h>  // Ethernet support
+#include <EthernetUdp.h> // Ethernet UDP support
 #include <TimeLib.h>   // Time functions  https://github.com/PaulStoffregen/Time
 #include <TinyGPSPlus.h>   // GPS parsing     https://github.com/mikalhart/TinyGPS
 #include <Wire.h>      // OLED and DS3231 necessary
@@ -38,7 +38,7 @@ IPAddress localEthernetIP;
 
 // An Ethernet UDP instance
 EthernetUDP Udp;
-// An Ethernet WebServer instance
+// An Ethernet WebServer instance for simple WEBIF
 EthernetServer server(80);
 
 #define PPS_PIN 22             // Pin on which 1PPS line is attached
@@ -56,10 +56,9 @@ EthernetServer server(80);
 RtcDS3231<TwoWire> Rtc(Wire);
 
 // LCD Display Type intial
-//U8G2_ST7565_ERC12864_ALT_F_4W_SW_SPI u8g2(U8G2_R0, /* clock=*/ 10, /* data=*/ 11, /* cs=*/ 13, /* dc=*/ 15, /* reset=*/ 14);
 U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, /* reset=*/ U8X8_PIN_NONE); // OLED display library parameters
 
-TinyGPSPlus gps;
+TinyGPSPlus gps;           // GPS instance
 time_t displayTime = 0;    // time that is currently displayed
 time_t syncTime = 0;       // time of last GPS or RTC synchronization
 time_t lastSetRTC = 0;     // time that RTC was last set
@@ -206,12 +205,12 @@ void ShowSyncFlag()
 
 void InitLCD()
 {
-  //u8g2.setI2CAddress(0x3C);
+  //u8g2.setI2CAddress(0x3C); // set I2C address from Display when you need
   u8g2.begin(); // Initialize OLED library
-  u8g2.setContrast(0);
-  u8g2.enableUTF8Print();
-  u8g2.setFontPosTop();
-  u8g2.setFontDirection(0);
+  u8g2.setContrast(0); // set contrast to very low (minimized OLED Burn-In problem)
+  u8g2.enableUTF8Print(); // UTF-8 compatibility
+  u8g2.setFontPosTop(); // set curser in the left top corner
+  u8g2.setFontDirection(0); // set Font Direction to default
 }
 
 // --------------------------------------------------------------------------------------------------
