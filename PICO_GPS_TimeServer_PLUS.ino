@@ -459,10 +459,6 @@ void processNTP()
     uint32_t timestamp, tempval;
     time_t t = now();
 
-    //gps.crack_datetime(&year, &month, &day, &hour, &minute, &second, &hundredths, &age);
-    //timestamp = numberOfSecondsSince1900Epoch(year,month,day,hour,minute,second);
-    //timestamp = numberOfSecondsSince1900Epoch(year(t), month(t), day(t), hour(t), minute(t), second(t));
-
     timestamp = now() + 2208988800UL;
 
 #if DEBUG
