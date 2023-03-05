@@ -205,7 +205,7 @@ void ShowSyncFlag()
 
 void InitLCD()
 {
-  //u8g2.setI2CAddress(0x3C); // set I2C address from Display when you need
+  u8g2.setI2CAddress(0x78); // set I2C address from Display when you need, in this case 0x3C*2
   u8g2.begin(); // Initialize OLED library
   u8g2.setContrast(0); // set contrast to very low (minimized OLED Burn-In problem)
   u8g2.enableUTF8Print(); // UTF-8 compatibility
