@@ -185,21 +185,34 @@ void ShowSyncFlag()
   u8g2.drawGlyph(0, 0, 259);
   u8g2.drawGlyph(84, 0, 263);
   
-  u8g2.setFont(u8g2_font_6x10_tf);
+  u8g2.setFont(u8g2_font_6x10_tf); // choose a suitable font
   if (gps.satellites.value() <= 9) {
     u8g2.drawStr(34, 0, "SAT");
     u8g2.drawStr(34, 9, "<");
     u8g2.drawLine(38, 13, 49, 13);
+    u8g2.setFont(u8g2_font_helvB12_tf); // choose a suitable font
+    u8g2.drawStr(18, 2, sats.c_str());
+  }
+  else {
+    u8g2.setFont(u8g2_font_helvB12_tf); // choose a suitable font
+    u8g2.drawStr(18, 2, sats.c_str());
   }
   
-  u8g2.drawStr(58, 0, "LOCK");
-  u8g2.drawStr(58, 9, "   >");
-  u8g2.drawLine(58, 13, 77, 13);
-  u8g2.drawLine(54, 0, 54, 19);
+  u8g2.setFont(u8g2_font_6x10_tf); // choose a suitable font
+  if (gps.satellites.value() <= 999) {
+    u8g2.drawStr(58, 0, "RESO");
+    u8g2.drawStr(58, 9, "   >");
+    u8g2.drawLine(58, 13, 77, 13);
+    u8g2.drawLine(54, 0, 54, 19);
+    u8g2.setFont(u8g2_font_helvB12_tf); // choose a suitable font
+    u8g2.drawStr(102, 2, resol.c_str());
+  }
+  else {
+    u8g2.setFont(u8g2_font_helvB12_tf); // choose a suitable font
+    u8g2.drawStr(102, 2, ">>>");
+  }
 
   u8g2.setFont(u8g2_font_helvB12_tf); // choose a suitable font
-  u8g2.drawStr(18, 2, sats.c_str());
-  u8g2.drawStr(102, 2, resol.c_str());
   u8g2.drawLine(0, 19, 127, 19);
 }
 
