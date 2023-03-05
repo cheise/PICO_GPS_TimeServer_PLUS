@@ -199,11 +199,11 @@ void ShowSyncFlag()
   }
   
   u8g2.setFont(u8g2_font_6x10_tf); // choose a suitable font
-  if (gps.satellites.value() <= 999) {
-    u8g2.drawStr(58, 0, "RESO");
-    u8g2.drawStr(58, 9, "   >");
-    u8g2.drawLine(58, 13, 77, 13);
-    u8g2.drawLine(54, 0, 54, 19);
+  u8g2.drawStr(58, 0, "RESO");
+  u8g2.drawStr(58, 9, "   >");
+  u8g2.drawLine(58, 13, 77, 13);
+  u8g2.drawLine(54, 0, 54, 19);
+  if (gps.satellites.value() <= 999) {  
     u8g2.setFont(u8g2_font_helvB12_tf); // choose a suitable font
     u8g2.drawStr(102, 2, resol.c_str());
   }
