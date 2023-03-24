@@ -9,6 +9,13 @@
 #include <Arduino.h>
 #include <U8g2lib.h>
 
+#ifdef U8X8_HAVE_HW_SPI
+#include <SPI.h>
+#endif
+#ifdef U8X8_HAVE_HW_I2C
+#include <Wire.h>
+#endif
+
 // Time Server Port
 #define NTP_PORT 123
 static const int NTP_PACKET_SIZE = 48;
